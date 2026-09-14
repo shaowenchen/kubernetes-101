@@ -1,0 +1,353 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Basic Kubernetes Components · Kubernetes 101</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="objects.html" />
+    
+    
+    <link rel="prev" href="install.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.chenshaowen.com/" target="_blank" class="custom-link">Kubernetes 101</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Course Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="service-feature.html">
+            
+                <a href="service-feature.html">
+            
+                    
+                    Characteristics of Internet Business
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="cloud-native.html">
+            
+                <a href="cloud-native.html">
+            
+                    
+                    What Cloud Native Is
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="install.html">
+            
+                <a href="install.html">
+            
+                    
+                    Deploying Kubernetes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5" data-path="components.html">
+            
+                <a href="components.html">
+            
+                    
+                    Basic Kubernetes Components
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="objects.html">
+            
+                <a href="objects.html">
+            
+                    
+                    Basic Kubernetes Objects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="app.html">
+            
+                <a href="app.html">
+            
+                    
+                    Deploying an Application on Kubernetes
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Basic Kubernetes Components</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="basic-kubernetes-components">Basic Kubernetes Components</h1>
+<p><img src="../images/k8s-arch.webp" style="width:500px;height:300px"></p>
+<p>Kubernetes cluster components fall into two classes, which is to say two node roles.</p>
+<ul>
+<li>master</li>
+</ul>
+<p>Master nodes mainly manage the whole cluster, usually 3 or 5 of them. The typical components running there are kube-apiserver, kube-controller-manager, kube-scheduler, and etcd. Although they can also serve workloads, that is not recommended in production.</p>
+<ul>
+<li>node</li>
+</ul>
+<p>Node nodes mainly carry business traffic, and their number can range from a few to dozens or even hundreds. The typical components running there are kubelet and kube-proxy; these are also deployed on masters.</p>
+<p>In production, it is best not to split a cluster too finely. An overly fine split raises operating cost, lowers resource utilization, and keeps Kubernetes from exploiting its elasticity to the full.</p>
+<h2 id="etcd">etcd</h2>
+<p>etcd is the cluster&apos;s storage component, usually run as 3 or 5 instances on master nodes.</p>
+<p>etcd uses two-phase commit based on the raft protocol to guarantee strong consistency in distributed scenarios. More instances is not better: the more instances, the longer a commit takes, and in practice it rarely exceeds 7 instances.</p>
+<p>The machines etcd runs on need the best possible disk IO; using SSDs noticeably lowers etcd response time.</p>
+<h2 id="kube-apiserver">kube-apiserver</h2>
+<p>etcd stores all the cluster&apos;s metadata, but every exchange of cluster metadata has to go through kube-apiserver.</p>
+<p>Here metadata means definitions of objects such as workloads and secrets, along with information about the state of the various objects.</p>
+<p>In a multi-master highly available cluster, kube-apiserver, kube-controller-manager, and kube-scheduler are all deployed as static Pods on every master node.</p>
+<p>kube-apiserver provides a unified entry point for reading, updating, adding, and deleting the whole cluster&apos;s metadata.</p>
+<h2 id="kube-controller-manager">kube-controller-manager</h2>
+<p>kube-controller-manager is a group of controllers, including the replica controller, node controller, and namespace controller.</p>
+<p>When you declaratively define a workload in the cluster, kube-controller-manager generates a series of objects so that the various components can work together.</p>
+<p>What kube-controller-manager does is essentially translate human-friendly metadata into machine-friendly metadata.</p>
+<h2 id="kube-scheduler">kube-scheduler</h2>
+<p>Kubernetes is a distributed operating system with many nodes.</p>
+<p>So how does it choose which node an application runs on? You can specify it by hand, or leave it to the scheduler, kube-scheduler.</p>
+<p>The job of kube-scheduler is simple: pick a suitable node for a workload. What is the problem with specifying it by hand?</p>
+<h2 id="kubelet">kubelet</h2>
+<p>Once a workload has chosen a node, kubelet learns about the workload that node needs to run.</p>
+<p>kubelet interacts with the container runtime to actually create the workload resources.</p>
+<p>kubelet implements the full lifecycle management of a node&apos;s workloads: creation, mounting storage, setting environment variables, consumption, eviction, and so on.</p>
+<p>kubelet also reports the state of Nodes and Pods.</p>
+<h2 id="kube-proxy">kube-proxy</h2>
+<p>Once a workload is running, it needs an entry point for outside access.</p>
+<p>At that point kube-proxy can configure traffic forwarding rules through iptables or ipvs, bringing external traffic into the application workload.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="install.html" class="navigation navigation-prev " aria-label="Previous page: Deploying Kubernetes">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="objects.html" class="navigation navigation-next " aria-label="Next page: Basic Kubernetes Objects">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Basic Kubernetes Components","level":"1.5","depth":1,"next":{"title":"Basic Kubernetes Objects","level":"1.6","depth":1,"path":"content/objects.md","ref":"content/objects.md","articles":[]},"previous":{"title":"Deploying Kubernetes","level":"1.4","depth":1,"path":"content/install.md","ref":"content/install.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"fontSettings":{"theme":"white","family":"serif","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":true,"instapaper":false,"vk":false,"all":["facebook","twitter","weibo","weibo","instapaper"]},"gitbook":{"ga":{"token":"G-TRHEYFQGW4"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"theme":"default","keywords":"Kubernetes,101,","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Kubernetes 101","language":"en","links":{"home":false,"about":false,"issues":false,"contribute":false,"sidebar":{"Kubernetes 101":"https://www.chenshaowen.com/"},"tail":{"Kubernetes 101":"https://www.chenshaowen.com/kubernetes-101/"},"gitbook":false},"introduction":{"path":"README.md","title":"Kubernetes 101"},"gitbook":"*","description":"Kubernetes 101"},"file":{"path":"content/components.md","mtime":"2026-09-14T02:08:14.753Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-09-14T02:08:51.986Z"},"basePath":"..","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

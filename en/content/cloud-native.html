@@ -1,0 +1,340 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>What Cloud Native Is · Kubernetes 101</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="install.html" />
+    
+    
+    <link rel="prev" href="service-feature.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.chenshaowen.com/" target="_blank" class="custom-link">Kubernetes 101</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Course Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="service-feature.html">
+            
+                <a href="service-feature.html">
+            
+                    
+                    Characteristics of Internet Business
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3" data-path="cloud-native.html">
+            
+                <a href="cloud-native.html">
+            
+                    
+                    What Cloud Native Is
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="install.html">
+            
+                <a href="install.html">
+            
+                    
+                    Deploying Kubernetes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="components.html">
+            
+                <a href="components.html">
+            
+                    
+                    Basic Kubernetes Components
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="objects.html">
+            
+                <a href="objects.html">
+            
+                    
+                    Basic Kubernetes Objects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="app.html">
+            
+                <a href="app.html">
+            
+                    
+                    Deploying an Application on Kubernetes
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >What Cloud Native Is</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="what-cloud-native-is">What Cloud Native Is</h1>
+<p>Cloud native was first proposed in 2013 by Matt Stine of Pivotal. Both PIVOTAL and CNCF have defined cloud native. It centers on the following technical points.</p>
+<h2 id="containerization">Containerization</h2>
+<p>Containers provide a portable, reusable way to package and distribute applications.</p>
+<p>We can package an application into an image locally, push it to an image registry, and on the server side pull the image directly and create a container. This brings enormous convenience to development, debugging, and deployment, and supports frequent releases.</p>
+<p>Beyond that, through namespace-level isolation, containers allow very high deployment density on a single machine while making horizontal scaling easy, absorbing the shocks of peak and off-peak traffic.</p>
+<h2 id="service-mesh">Service Mesh</h2>
+<p>With the rise of microservices, hundreds or thousands of services call one another, and people alone can no longer govern them.</p>
+<p>A service mesh can solve a whole series of problems between services: discovery, interconnection, security, protocol conversion, circuit breaking, and authentication. Operations that previously required manual instrumentation and manual maintenance are pushed down into foundational capability.</p>
+<p>To the business, a service mesh should be transparent and imperceptible, and yet present everywhere.</p>
+<h2 id="devops">DevOps</h2>
+<p>DevOps actually carries two meanings: a toolchain, and a culture of continuous delivery.</p>
+<p>With many applications and many services, the development environment we face is demanding, highly complex, and error-prone. So we need a lot of automated and self-service tooling &#x2014; continuous integration, continuous deployment, code scanning, security scanning, and so on. These toolchains support our R&amp;D process.</p>
+<p>On the other side, DevOps is an attempt to establish a results-oriented development model. Each member is no longer responsible only for a single module, but pays attention across the whole cycle from raising a requirement to delivering it to the user. DevOps emphasizes end-to-end value delivery.</p>
+<h2 id="declarative-api">Declarative API</h2>
+<p>The original count is a=3, and now we need to add 2.</p>
+<p>Using a=a+1, a=a+1 is procedural.</p>
+<p>Using a=5 is declarative.</p>
+<p>What declarative emphasizes is the final state. Intermediate states may be inconsistent or unexpected, but the final state is certain.</p>
+<p>Declarative APIs matter greatly in the Kubernetes ecosystem, because in operations scenarios infrastructure is unstable and always going +1, -1 &#x2014; and there a declarative API is very effective.</p>
+<h2 id="immutable-infrastructure">Immutable Infrastructure</h2>
+<p>Under traditional architecture, people must keep every environment consistent. Over time configuration inevitably drifts, which easily leads to incidents.</p>
+<p>Immutable infrastructure says that once created, no form of modification is accepted. There is only one way to update: destroy first, then rebuild.</p>
+<p>The benefit is a runtime environment that is controllable and manageable.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="service-feature.html" class="navigation navigation-prev " aria-label="Previous page: Characteristics of Internet Business">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="install.html" class="navigation navigation-next " aria-label="Next page: Deploying Kubernetes">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"What Cloud Native Is","level":"1.3","depth":1,"next":{"title":"Deploying Kubernetes","level":"1.4","depth":1,"path":"content/install.md","ref":"content/install.md","articles":[]},"previous":{"title":"Characteristics of Internet Business","level":"1.2","depth":1,"path":"content/service-feature.md","ref":"content/service-feature.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"fontSettings":{"theme":"white","family":"serif","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":true,"instapaper":false,"vk":false,"all":["facebook","twitter","weibo","weibo","instapaper"]},"gitbook":{"ga":{"token":"G-TRHEYFQGW4"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"theme":"default","keywords":"Kubernetes,101,","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Kubernetes 101","language":"en","links":{"home":false,"about":false,"issues":false,"contribute":false,"sidebar":{"Kubernetes 101":"https://www.chenshaowen.com/"},"tail":{"Kubernetes 101":"https://www.chenshaowen.com/kubernetes-101/"},"gitbook":false},"introduction":{"path":"README.md","title":"Kubernetes 101"},"gitbook":"*","description":"Kubernetes 101"},"file":{"path":"content/cloud-native.md","mtime":"2026-09-14T02:08:14.753Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-09-14T02:08:51.986Z"},"basePath":"..","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

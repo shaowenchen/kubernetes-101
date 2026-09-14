@@ -1,0 +1,343 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Basic Kubernetes Objects · Kubernetes 101</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="app.html" />
+    
+    
+    <link rel="prev" href="components.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.chenshaowen.com/" target="_blank" class="custom-link">Kubernetes 101</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Course Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="service-feature.html">
+            
+                <a href="service-feature.html">
+            
+                    
+                    Characteristics of Internet Business
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="cloud-native.html">
+            
+                <a href="cloud-native.html">
+            
+                    
+                    What Cloud Native Is
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="install.html">
+            
+                <a href="install.html">
+            
+                    
+                    Deploying Kubernetes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="components.html">
+            
+                <a href="components.html">
+            
+                    
+                    Basic Kubernetes Components
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6" data-path="objects.html">
+            
+                <a href="objects.html">
+            
+                    
+                    Basic Kubernetes Objects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="app.html">
+            
+                <a href="app.html">
+            
+                    
+                    Deploying an Application on Kubernetes
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Basic Kubernetes Objects</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="basic-kubernetes-objects">Basic Kubernetes Objects</h1>
+<p><img src="../images/k8s-object.webp" style="width:500px;height:300px"></p>
+<h2 id="pod-is-the-smallest-unit-kubernetes-creates-or-deploys">Pod Is the Smallest Unit Kubernetes Creates or Deploys</h2>
+<p>A Pod encapsulates one or more containers, storage resources (volumes), an independent network IP, and the policy options that govern how the containers run.</p>
+<h2 id="deployment-is-a-service-oriented-wrapper-around-pods">Deployment Is a Service-Oriented Wrapper Around Pods</h2>
+<p>A Deployment can contain one or more Pods. Every Pod has the same role, so the system automatically distributes requests across the Deployment&apos;s Pods.</p>
+<h2 id="statefulset-is-the-object-for-managing-stateful-applications">StatefulSet Is the Object for Managing Stateful Applications</h2>
+<p>Like a Deployment, a StatefulSet manages a set of Pods based on the same container definition. Unlike a Deployment, a StatefulSet maintains a fixed name for each of its Pods. The Pods are created from the same declaration but are not interchangeable; no matter how they are scheduled, each Pod has a permanent, unchanging name.</p>
+<h2 id="job-is-the-object-for-controlling-batch-tasks">Job Is the Object for Controlling Batch Tasks</h2>
+<p>The main difference between batch business and long-running serving business (Deployment) is that a batch job has a beginning and an end, while a long-running serving job runs forever unless the user stops it.</p>
+<p>The Pods a Job manages exit automatically once the task completes successfully according to the user&apos;s settings, and the Pods are deleted automatically.</p>
+<h2 id="cronjob-is-a-time-controlled-job">CronJob Is a Time-Controlled Job</h2>
+<p>Similar to the Linux crontab, it runs a specified task on a specified time cycle.</p>
+<h2 id="daemonset-is-an-object-a-daemon">DaemonSet Is an Object (a Daemon)</h2>
+<p>It runs a Pod on every node in the cluster and guarantees exactly one, which makes it well suited to system-level applications such as log collection and resource monitoring. Such applications need to run on every node and do not need many instances; a good example is Kubernetes&apos; own kube-proxy.</p>
+<h2 id="service-solves-the-problem-of-accessing-pods">Service Solves the Problem of Accessing Pods</h2>
+<p>A Service has a fixed IP address. The Service forwards access traffic to Pods, and it can load balance across those Pods.</p>
+<h2 id="ingress-routing-and-forwarding">Ingress Routing and Forwarding</h2>
+<p>A Service forwards at layer 4, based on TCP and UDP, while Ingress can forward at layer 7, based on HTTP and HTTPS, allowing finer-grained division by domain name and path.</p>
+<h2 id="configmap-is-a-resource-type-for-storing-the-configuration-an-application-needs">ConfigMap Is a Resource Type for Storing the Configuration an Application Needs</h2>
+<p>It holds configuration data as key-value pairs, making it easy to decouple configuration so that different environments have different configuration.</p>
+<h2 id="secret-is-an-encrypted-storage-resource-object">Secret Is an Encrypted Storage Resource Object</h2>
+<p>Authentication information, certificates, and private keys can be kept in a Secret rather than exposed in an image or a Pod definition, which is both safer and more flexible.</p>
+<h2 id="persistentvolume-pv">PersistentVolume (PV)</h2>
+<p>A PV defines a piece of persistent storage, such as a mounted NFS directory.</p>
+<h2 id="persistentvolumeclaim-pvc">PersistentVolumeClaim (PVC)</h2>
+<p>Kubernetes provides PVC specifically for requesting persistent storage. A PVC lets you ignore how the underlying storage resource is created and released, and simply declare what type of storage resource you need and how much space.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="components.html" class="navigation navigation-prev " aria-label="Previous page: Basic Kubernetes Components">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="app.html" class="navigation navigation-next " aria-label="Next page: Deploying an Application on Kubernetes">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Basic Kubernetes Objects","level":"1.6","depth":1,"next":{"title":"Deploying an Application on Kubernetes","level":"1.7","depth":1,"path":"content/app.md","ref":"content/app.md","articles":[]},"previous":{"title":"Basic Kubernetes Components","level":"1.5","depth":1,"path":"content/components.md","ref":"content/components.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"fontSettings":{"theme":"white","family":"serif","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":true,"instapaper":false,"vk":false,"all":["facebook","twitter","weibo","weibo","instapaper"]},"gitbook":{"ga":{"token":"G-TRHEYFQGW4"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"theme":"default","keywords":"Kubernetes,101,","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Kubernetes 101","language":"en","links":{"home":false,"about":false,"issues":false,"contribute":false,"sidebar":{"Kubernetes 101":"https://www.chenshaowen.com/"},"tail":{"Kubernetes 101":"https://www.chenshaowen.com/kubernetes-101/"},"gitbook":false},"introduction":{"path":"README.md","title":"Kubernetes 101"},"gitbook":"*","description":"Kubernetes 101"},"file":{"path":"content/objects.md","mtime":"2026-09-14T02:08:14.753Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-09-14T02:08:51.986Z"},"basePath":"..","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
